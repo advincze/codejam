@@ -22,7 +22,6 @@ func main() {
 
 	k := 1
 	for count, _ := strconv.Atoi(c[:len(c)-1]); count > 0; count-- {
-		// fmt.Println("block start", k)
 		var res GameState = draw
 		var cross1 [4]byte
 		var cross2 [4]byte
@@ -40,31 +39,24 @@ func main() {
 				}
 			}
 			res = mergeresult(res, checkline(horizontal))
-			// fmt.Println("rh", i, res)
 			r.ReadBytes('\n')
 		}
 
 		res = mergeresult(res, checkline(cross1))
-		// fmt.Println("rc1", res)
 		res = mergeresult(res, checkline(cross2))
-		// fmt.Println("rc2", res)
 
 		for i := 0; i < 4; i++ {
 			res = mergeresult(res, checkline(vert[i]))
-			// fmt.Println("rv", i, res)
 		}
 
 		fmt.Printf("Case #%v: %v\n", k, res)
 		k++
 		r.ReadBytes('\n')
-		// fmt.Println("block end")
-
 	}
 
 }
 
 func mergeresult(res, newres GameState) GameState {
-	// fmt.Println("merge ", res, newres)
 	switch res {
 	case xWins, oWins:
 		return res
@@ -89,11 +81,6 @@ func mergeresult(res, newres GameState) GameState {
 
 func checkline(line [4]byte) GameState {
 	var gameState GameState
-
-	// for _, b := range line {
-	// 	fmt.Print(string(b), "")
-	// }
-	// fmt.Println()
 	for _, b := range line {
 
 		if b == empty {

@@ -17,10 +17,7 @@ func main() {
 	b, _ := ioutil.ReadFile(*fname)
 	lines := strings.Split(string(b), "\n")
 
-	// read count
 	count, _ := strconv.Atoi(lines[0])
-	//fmt.Println("count", count)
-	// count = 4
 	for i, k := 0, 1; i < count; i++ {
 		arr := strings.Split(lines[k], " ")
 		m, _ := strconv.Atoi(arr[0])
@@ -82,7 +79,6 @@ func possible(bb [][]int, maxx, maxy []int) bool {
 			if val < maxx[i] && val < maxy[j] {
 				return false
 			}
-
 		}
 	}
 	return true
